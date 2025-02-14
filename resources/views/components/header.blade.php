@@ -35,12 +35,12 @@
             </svg>
             <span class="sr-only">Toggle sidebar</span>
           </button>
-          <a href="#" class="flex items-center justify-between mr-4">
-            <!-- <img
-              src="logos/ir_logo.png"
-              class="mr-3 h-8"
-              alt="Flowbite Logo"
-            /> -->
+          <a href="#" class="flex items-center justify-between mr-2">
+            <img
+              src="{{ asset('logos/ir_logo.png') }}"
+              class="mr-2 h-12"
+              alt="EQ App Logo"
+            />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Emergency Quota App</span>
           </a>
         </div>
@@ -55,7 +55,7 @@
             <span class="sr-only">Open user menu</span>
             <img
               class="w-8 h-8 rounded-full"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+              src="{{ asset('images/user.png') }}"
               alt="user photo"
             />
           </button>
@@ -67,11 +67,11 @@
             <div class="py-3 px-4">
               <span
                 class="block text-sm font-semibold text-gray-900 dark:text-white"
-                >Neil Sims</span
+                >{{ Auth::user()->name }}</span
               >
               <span
                 class="block text-sm text-gray-900 truncate dark:text-white"
-                >name@flowbite.com</span
+                >{{ Auth::user()->designation }}</span
               >
             </div>
             <ul
@@ -82,7 +82,7 @@
                 <a
                   href="#"
                   class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                  >My profile</a
+                  >Role : {{ strtoupper(Auth::user()->role) }}</a
                 >
               </li>
             </ul>
@@ -91,11 +91,14 @@
               aria-labelledby="dropdown"
             >
               <li>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
                 <a
                   href="#"
                   class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Sign out</a
+                  onclick="this.closest('form').submit();return false;">Logout</a
                 >
+              </form>
               </li>
             </ul>
           </div>

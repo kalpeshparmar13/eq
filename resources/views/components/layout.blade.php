@@ -18,10 +18,10 @@
     <main class="p-4 md:ml-64 h-auto pt-20">
       <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4 mb-2">
         <div class="border-2 border-gray-300 rounded-lg dark:border-gray-600 h-12 md:h-16 bg-brand-medium text-gray-500 font-bold text-2xl flex items-center pl-4">
-            {{ $slot }}
+            {{ $headContentSlot ?? 'No heading' }}
         </div>
-        <div class="border-2 bg-brand-light rounded-lg border-gray-300 dark:border-gray-600 h-[48em] mb-4">
-
+        <div class="border-2 bg-brand-light rounded-lg border-gray-300 dark:border-gray-600 min-h mb-4">
+            {{ $mainContentSlot ?? 'No Content' }}
         </div>
       </div>
     </main>

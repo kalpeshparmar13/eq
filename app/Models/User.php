@@ -18,9 +18,16 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'pfno',
         'name',
+        'designation',
         'email',
+        'mobile_no',
+        'role',
+        'is_active',
         'password',
+        'created_by',
+        'updated_by'
     ];
 
     /**
@@ -44,5 +51,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Define the inverse of the relationships for EmergencyQuotaRequest
+    public function requestedEmergencyQuotaRequests()
+    {
+        return $this->hasMany(EmergencyQuotaRequest::class, 'request_of'); // user's requested quota
+    }
+
+    public function emergencyQuotaRequestsByUser()
+    {
+        return $this->hasMany(EmergencyQuotaRequest::class, 'request_by'); // requests made by user
+    }
+
+    public function createdEmergencyQuotaRequests()
+    {
+        return $this->hasMany(EmergencyQuotaRequest::class, 'created_by'); // requests created by user
     }
 }

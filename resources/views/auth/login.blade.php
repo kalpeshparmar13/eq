@@ -10,8 +10,8 @@
 <body class="dark:bg-gray-900 bg-brand-light">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen">
         <!-- Logo Section -->
-        <a href="#" class="flex items-center justify-center text-2xl font-semibold mb-4 lg:mb-4 dark:text-white">
-            <img src="{{ asset('logos/ir_logo.png') }}" class="mr-4 h-20" alt="Logo">
+        <a href="#" class="flex items-center justify-center text-2xl font-semibold mb-2 lg:mb-2 dark:text-white">
+            <img src="{{ asset('logos/ir_logo.png') }}" class="mr-4 h-32" alt="Logo">
         </a>
 
         <!-- Title Section -->
@@ -28,7 +28,8 @@
                 </h1>
 
                 <!-- Form -->
-                <form class="space-y-4 md:space-y-6" action="#">
+                <form class="space-y-4 md:space-y-6" action="{{ route('login') }}" method="POST">
+                    @csrf
                     <!-- PF No Input -->
                     <div>
                         <label for="pfno" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">PF No</label>
@@ -38,7 +39,7 @@
                     <!-- Password Input -->
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-500 dark:text-white">Password</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" class="form-input bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-600 dark:focus:border-primary-600" required>
+                        <input type="password" name="password" id="password" placeholder="••••••••" class="form-input bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-600 dark:focus:border-primary-600" value="password" required>
                     </div>
 
                     <!-- Forgot Password Link -->
@@ -47,9 +48,21 @@
                     </div>
 
                     <!-- Login Button -->
-                    <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">
                         Login
                     </button>
+
+                    <!-- Display any errors -->
+                    @if ($errors->any())
+                        <div style="color: red;">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 </form>
             </div>
         </div>
