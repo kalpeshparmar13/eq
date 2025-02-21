@@ -1,4 +1,45 @@
 <x-layout>
+    @slot('headSlot')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+        <style>
+            /* Container for the dropdown list */
+            #station-results-from, #station-results-to {
+                position: absolute; /* Position it relative to the parent */
+                width: fit-content; /* Full width of the input field */
+                max-height: 300px; /* Limit the height of the dropdown */
+                overflow-y: auto; /* Scroll if the results exceed max height */
+                border: 1px solid #ccc; /* Add a border */
+                border-radius: 5px; /* Rounded corners */
+                background-color: white; /* White background */
+                z-index: 9999; /* Make sure the dropdown is on top of other elements */
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a soft shadow */
+                display: none; /* Initially hidden */
+            }
+
+            /* Styling for each result item */
+            .result-item {
+                padding: 8px 12px; /* Add some padding to each result */
+                cursor: pointer; /* Change cursor to pointer when hovering */
+                transition: background-color 0.3s ease; /* Smooth background color transition */
+            }
+
+            /* Highlight result item on hover */
+            .result-item:hover {
+                background-color: #f1f1f1; /* Light grey background on hover */
+            }
+
+
+            /* To position the dropdown correctly */
+            .autocomplete-container {
+                position: relative; /* So the dropdown positions relative to the input */
+                margin-bottom: 20px; /* Add space between inputs */
+            }
+        </style>
+
+    @endslot
     <!-- Second Slot Content -->
     @slot('headContentSlot')
         Edit Emergency Quota Request
@@ -14,8 +55,6 @@
                 <label for="pnr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PNR No</label>
                 <input name="pnr" type="text" id="pnr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter PNR No" required value="{{ $eqrequest->pnr }}"/>
             </div>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
             <div>
                 <label for="train_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Train No</label>
                 <input name="train_no" type="text" id="train_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Train No" required value="{{ $eqrequest->train_no }}" />
@@ -23,7 +62,9 @@
             <div>
                 <label for="train_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Train Name</label>
                 <input name="train_name" type="text" id="train_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Train Name" required value="{{ $eqrequest->train_name }}"/>
-            </div>  
+            </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
             <div>
                 <label for="journey_dt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Journey Date</label>
                 <input name="journey_dt" type="date" id="journey_dt" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="dd-mm-yyyy" required value="{{ \Carbon\Carbon::parse($eqrequest->journey_dt)->format('Y-m-d') }}"/>
@@ -31,14 +72,28 @@
             <div>
                 <label for="stn_from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Station From</label>
                 <input name="stn_from" type="text" id="stn_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Station From" required value="{{ $eqrequest->stn_from }}"/>
+                <div id="station-results-from" style="display: none; border: 1px solid #ccc; margin-top: 5px;">
+                    <!-- Results for Station From will be shown here -->
+                </div>
             </div>
             <div>
                 <label for="stn_to" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Station To</label>
                 <input name="stn_to" type="text" id="stn_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Station To" required value="{{ $eqrequest->stn_to }}"/>
+                <div id="station-results-to" style="display: none; border: 1px solid #ccc; margin-top: 5px;">
+                    <!-- Results for Station To will be shown here -->
+                </div>
             </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
             <div >
                 <label for="class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class</label>
-                <input name="class" type="text" id="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="--select class--" required value="{{ $eqrequest->class }}"/>
+                <select name="class" id="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    @foreach ($trainClasses as $trainClass)
+                        <option value="{{ $trainClass->id }}" text="{{ $trainClass->fname }}" @if($trainClass->id == $eqrequest->class) selected @endif>
+                            {{ $trainClass->fname }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div>
                 <label for="no_of_births" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of Births</label>
@@ -82,5 +137,64 @@
             </div>
         @endif
     </form>
+    @endslot
+    @slot('footerSlot')
+    <script>
+        $(document).ready(function() {
+            // Common function for handling AJAX requests for both fields
+            function autocomplete(inputId, resultsId) {
+                $('#' + inputId).on('keyup', function() {
+                    var query = $(this).val();  // Get the value from the input field
+
+                    if (query.length > 2) {  // Trigger search when typing more than 2 characters
+                        $.ajax({
+                            url: "{{ route('autocomplete') }}",  // The route to send the request
+                            method: 'GET',
+                            data: { query: query },  // Send the query as a parameter
+                            success: function(data) {
+                                if (data.length > 0) {
+                                    var resultsHtml = '';
+                                    data.forEach(function(station) {
+                                        resultsHtml += '<div class="result-item" data-id="' + station.id + '">' + station.name + '</div>';
+                                    });
+
+                                    // Display the results in the dropdown
+                                    $('#' + resultsId).html(resultsHtml).show();
+                                } else {
+                                    $('#' + resultsId).hide();  // Hide dropdown if no results
+                                }
+                            },
+                            error: function() {
+                                console.error('Error fetching data.');
+                            }
+                        });
+                    } else {
+                        $('#' + resultsId).hide();  // Hide results if less than 3 characters typed
+                    }
+                });
+
+                // When a user clicks on a result item
+                $(document).on('click', '#' + resultsId + ' .result-item', function() {
+                    var stationName = $(this).text();
+                    var stationId = $(this).data('id');
+
+                    $('#' + inputId).val(stationName);  // Set the input field to the selected station name
+                    $('#' + resultsId).hide();  // Hide results after selection
+                });
+
+                // Close the dropdown if clicking outside the input or results
+                $(document).click(function(event) {
+                    if (!$(event.target).closest('#' + inputId + ', #' + resultsId).length) {
+                        $('#' + resultsId).hide();  // Hide the dropdown when clicking outside
+                    }
+                });
+            }
+
+            // Call the autocomplete function for both "Station From" and "Station To"
+            autocomplete('stn_from', 'station-results-from');
+            autocomplete('stn_to', 'station-results-to');
+        });
+
+    </script>
     @endslot
 </x-layout>

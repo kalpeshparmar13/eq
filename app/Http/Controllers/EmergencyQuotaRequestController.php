@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EmergencyQuotaRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
+use App\Models\TrainClass;
 
 class EmergencyQuotaRequestController extends Controller
 {
@@ -23,7 +25,11 @@ class EmergencyQuotaRequestController extends Controller
      */
     public function create()
     {
-        return view('eqrequest.create');
+        // Fetch all train classes from the database
+        $trainClasses = TrainClass::all(); 
+
+         // Pass the data to the view
+         return view('eqrequest.create', compact('trainClasses'));
     }
 
     /**
@@ -86,7 +92,10 @@ class EmergencyQuotaRequestController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $eqrequest = EmergencyQuotaRequest::find($id);
+        $trainClasses = TrainClass::all(); 
+        $users = User::where('role', 'like', 'approving_officer')->get(['id', 'name']);
+        return view('eqrequest.show', compact('users'), compact('eqrequest'), compact('trainClasses'));
     }
 
     /**
@@ -95,8 +104,8 @@ class EmergencyQuotaRequestController extends Controller
     public function edit(string $id)
     {
         $eqrequest = EmergencyQuotaRequest::find($id);
-
-        return view('eqrequest.edit', compact('eqrequest'));
+        $trainClasses = TrainClass::all(); 
+        return view('eqrequest.edit', compact('eqrequest'),compact('trainClasses'));
     }
 
     /**
@@ -161,5 +170,24 @@ class EmergencyQuotaRequestController extends Controller
 
         return redirect()->route('eqrequest.index')
             ->with('success', 'Emergency Quota Request deleted successfully!');
-    }                                   
+    }    
+    
+    public function forward(Request $request, string $id)
+    {
+        // Find the emergency quota request by id
+        $eqrequest = EmergencyQuotaRequest::findOrFail($id);
+
+        // Validate the input data
+        $request->validate([
+            'forwarded_to' => 'required|string',
+        ]);
+
+        // Update the 'forwarded_to' field
+        $eqrequest->forwarded_to = $request->input('forwarded_to');
+        $eqrequest->save();
+
+        // Redirect back with a success message
+        return redirect()->route('eqrequest.index') // or wherever you want to redirect
+            ->with('success', 'Emergency Quota Request forwarded successfully!');
+    }
 }

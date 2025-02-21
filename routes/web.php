@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmergencyQuotaRequestController;
+use App\Http\Controllers\StationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,5 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/eqrequest/{id}/edit', [EmergencyQuotaRequestController::class, 'edit'])->name('eqrequest.edit');
     Route::put('/eqrequest/{id}', [EmergencyQuotaRequestController::class, 'update'])->name('eqrequest.update');
     Route::delete('/eqrequest/{id}', [EmergencyQuotaRequestController::class, 'destroy'])->name('eqrequest.destroy');
+    Route::put('/eqrequest/{id}', [EmergencyQuotaRequestController::class, 'forward'])->name('eqrequest.forward');
 });
+Route::get('/autocomplete', [StationController::class, 'autocomplete'])->name('autocomplete');
 ?>

@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(EmergencyQuotaRequest::class, 'created_by'); // requests created by user
     }
+
+    public function forwardedEmergencyQuotaRequests()
+    {
+        return $this->hasMany(EmergencyQuotaRequest::class, 'forwarded_to'); // requests forwarded to user
+    }
 }

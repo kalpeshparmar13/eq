@@ -6,6 +6,7 @@
     <title>EQ</title>
     <!-- Link CSS with Vite -->
     @vite(['resources/css/app.css'])
+    {{ $headSlot }}
 </head>
 <body>
   <div class="antialiased bg-gray-50 dark:bg-gray-900">
@@ -29,5 +30,6 @@
   </div>
   <!-- Link JS with Vite -->
   @vite(['resources/js/app.js'])
+  {{ $footerSlot }}
 </body>
 </html>

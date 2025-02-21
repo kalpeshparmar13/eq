@@ -66,7 +66,7 @@
                 href="{{ route('eqrequest.create') }}"
                 onclick="this.closest('form').submit(); return false;"
                 class="flex items-center p-2 pl-11 w-full text-base font-medium text-white rounded-lg transition duration-75 group hover:bg-brand-dark dark:text-white dark:hover:bg-gray-700"
-                >Create Request</a
+                >Create</a
             >
             </li>
             <li>
@@ -74,14 +74,7 @@
                 href="{{ route('eqrequest.index') }}"
                 onclick="this.closest('form').submit(); return false;"
                 class="flex items-center p-2 pl-11 w-full text-base font-medium text-white rounded-lg transition duration-75 group hover:bg-brand-dark dark:text-white dark:hover:bg-gray-700"
-                >View All</a
-            >
-            </li>
-            <li>
-            <a
-                href="#"
-                class="flex items-center p-2 pl-11 w-full text-base font-medium text-white rounded-lg transition duration-75 group hover:bg-brand-dark dark:text-white dark:hover:bg-gray-700"
-                >Calendar</a
+                >Edit/Delete/Forward</a
             >
             </li>
         </ul>

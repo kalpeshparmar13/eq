@@ -28,11 +28,15 @@ class EmergencyQuotaRequest extends Model
         'journey_purpose',
         'created_by',
         'created_dt',
+        'forwarded_to',
+        'forwarded_dt',
+        
     ];
 
     protected $casts = [
         'journey_dt' => 'date',
         'created_dt' => 'date',
+        'forwarded_dt' => 'date',
     ];
 
     // Define the relationship with the User model for each foreign key
@@ -49,5 +53,10 @@ class EmergencyQuotaRequest extends Model
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by'); // user who created the record
+    }
+
+    public function forwardedTo()
+    {
+        return $this->belongsTo(User::class, 'forwarded_to'); // user who the request is forwarded to
     }
 }
