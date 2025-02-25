@@ -8,9 +8,8 @@
 
     @slot('mainContentSlot')
     
-    <form class="max-w-full ml-6 mr-6 mt-2 mb-10 p-5" action="{{ route('eqrequest.store') }}" method="POST">
-        @csrf
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-gray-100 uppercase bg-brand-default dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -33,10 +32,10 @@
                         Journey Date
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        From Station
+                        From STN
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        To Station
+                        To STN
                     </th>
                     <!-- <th scope="col" class="px-6 py-3">
                         No. of Births
@@ -77,10 +76,10 @@
                         {{ \Carbon\Carbon::parse($eqreq->journey_dt)->format('d-m-Y') }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $eqreq->stn_from }}
+                        {{ $eqreq->stationFrom->code }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $eqreq->stn_to }}
+                        {{ $eqreq->stationTo->code }}
                     </td>
                     <!-- <td class="px-6 py-4">
                         {{ $eqreq->no_of_births }}
@@ -95,6 +94,7 @@
                         {{ $eqreq->mobile_no }}
                     </td> -->
                     <td class="px-6 py-4 text-right flex">
+                        @if ($eqreq->status == 'CREATED')
                         <a href="{{ route('eqrequest.edit', $eqreq->id) }}" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >Edit</a>
                         <form action="{{ route('eqrequest.destroy', $eqreq->id) }}" method="POST">
                             @csrf
@@ -102,13 +102,16 @@
                             <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
                         </form>
                         <a href="{{ route('eqrequest.show', $eqreq->id) }}" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >Forward</a>
+                        @elseif ($eqreq->status == 'FORWARDED')
+                        <a href="{{ route('eqrequest.show', $eqreq->id) }}" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >Pullback</a>    
+                        @endif
+                        
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        </div>
-    </form>
+    </div>
     @endslot
     @slot('footerSlot')
     @endslot

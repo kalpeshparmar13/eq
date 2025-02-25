@@ -52,6 +52,19 @@
         @method('PUT')
         <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
             <div>
+                <label for="request_of" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Request Of</label>
+                <select name="request_of" id="request_of" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    <option value="">-- Select Request Of --</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}" text="{{ $user->name }}" @if($user->id == $eqrequest->request_of) selected @endif>
+                            {{ $user->name }}
+                        </option>
+                    @endforeach
+                </select>             
+            </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
+            <div>
                 <label for="pnr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PNR No</label>
                 <input name="pnr" type="text" id="pnr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter PNR No" required value="{{ $eqrequest->pnr }}"/>
             </div>
@@ -71,14 +84,16 @@
             </div>
             <div>
                 <label for="stn_from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Station From</label>
-                <input name="stn_from" type="text" id="stn_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Station From" required value="{{ $eqrequest->stn_from }}"/>
+                <input name="stn_from" type="text" id="stn_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Station From" required value="{{ $eqrequest->stationFrom->name }}"/>
+                <input name="stn_from_id" type="hidden" id="stn_from_id" value="{{ $eqrequest->stn_from }}"/>
                 <div id="station-results-from" style="display: none; border: 1px solid #ccc; margin-top: 5px;">
                     <!-- Results for Station From will be shown here -->
                 </div>
             </div>
             <div>
                 <label for="stn_to" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Station To</label>
-                <input name="stn_to" type="text" id="stn_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Station To" required value="{{ $eqrequest->stn_to }}"/>
+                <input name="stn_to" type="text" id="stn_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Station To" required value="{{ $eqrequest->stationTo->name }}"/>
+                <input name="stn_to_id" type="hidden" id="stn_to_id" value="{{ $eqrequest->stn_to }}" />
                 <div id="station-results-to" style="display: none; border: 1px solid #ccc; margin-top: 5px;">
                     <!-- Results for Station To will be shown here -->
                 </div>
@@ -86,10 +101,10 @@
         </div>
         <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
             <div >
-                <label for="class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class</label>
-                <select name="class" id="class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <label for="train_class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class</label>
+                <select name="train_class" id="train_class" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                     @foreach ($trainClasses as $trainClass)
-                        <option value="{{ $trainClass->id }}" text="{{ $trainClass->fname }}" @if($trainClass->id == $eqrequest->class) selected @endif>
+                        <option value="{{ $trainClass->id }}" text="{{ $trainClass->fname }}" @if($trainClass->id == $eqrequest->trainClass->id) selected @endif>
                             {{ $trainClass->fname }}
                         </option>
                     @endforeach
@@ -117,6 +132,19 @@
                 <label for="journey_purpose" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Journey Purpose</label>
                 <input name="journey_purpose" type="text" id="journey_purpose" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Journey Purpose" required value="{{ $eqrequest->journey_purpose }}"/>
             </div>  
+        </div>
+        <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
+            <div>
+                <label for="request_by" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Staff Requesting for Quota</label>
+                <select name="request_by" id="request_by" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    <option value="">-- Select Requested By --</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}" text="{{ $user->name }}" @if($user->id == $eqrequest->request_by) selected @endif>
+                            {{ $user->name }}
+                        </option>
+                    @endforeach
+                </select>             
+            </div> 
         </div> 
         <div class="flex space-x-4">
             <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-1/2">
@@ -179,6 +207,7 @@
                     var stationId = $(this).data('id');
 
                     $('#' + inputId).val(stationName);  // Set the input field to the selected station name
+                    $('#' + inputId + "_id").val(stationId);  // Set the input field to the selected station id
                     $('#' + resultsId).hide();  // Hide results after selection
                 });
 

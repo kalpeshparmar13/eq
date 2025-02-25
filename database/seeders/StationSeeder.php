@@ -16,11 +16,14 @@ class StationSeeder extends Seeder
         Station::truncate();
         $heading = true;
         $input_file = fopen(base_path("database/data/stations.csv"), "r");
+
+        $stations = collect();
+
         while (($record = fgetcsv($input_file, 1000, ",")) !== FALSE)
         {
             if (!$heading)
             {
-                $station = array(
+                $stations->push([
                     "id" => $record['0'],
                     "name" => $record['1'],
                     "code" => $record['2'],
@@ -29,11 +32,14 @@ class StationSeeder extends Seeder
                     "zone" => $record['5'],
                     "district" => $record['6'],
                     "state" => $record['7']
-                );
-                Station::create($station);    
+                ]);
             }
             $heading = false;
         }
         fclose($input_file);
+
+        $stations->chunk(1000)->each(function ($chunk) {
+            Station::insert($chunk->toArray());
+        });
     }
 }

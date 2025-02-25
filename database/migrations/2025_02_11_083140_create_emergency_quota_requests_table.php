@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\User;
+use App\Models\Station;
+use App\Models\TrainClass;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
+
 
 return new class extends Migration
 {
@@ -14,27 +19,24 @@ return new class extends Migration
         Schema::create('emergency_quota_requests', function (Blueprint $table) {
             $table->id();
             $table->string('diary_no');
-            $table->unsignedBigInteger('request_of'); 
-            $table->unsignedBigInteger('request_by'); 
-            $table->unsignedBigInteger('created_by'); 
+            $table->foreignIdFor(User::class, 'request_of')->constrained(); 
+            $table->foreignIdFor(User::class, 'request_by')->constrained(); 
+            $table->foreignIdFor(User::class, 'created_by')->constrained(); 
+            $table->foreignIdFor(User::class, 'forwarded_to')->nullable()->constrained(); 
             $table->string('pnr');
             $table->string('train_no');
             $table->string('train_name');
             $table->date('journey_dt');
-            $table->string('stn_from');
-            $table->string('stn_to');
+            $table->foreignIdFor(Station::class, 'stn_from')->constrained();
+            $table->foreignIdFor(Station::class, 'stn_to')->constrained();
             $table->string('no_of_births');
-            $table->string('class');
+            $table->foreignIdFor(TrainClass::class,'train_class')->constrained();
             $table->string('passenger_name');
             $table->string('mobile_no');
             $table->string('journey_purpose');
-            $table->date('created_dt');
+            $table->date('forwarded_dt')->nullable();
+            $table->string('status');
             $table->timestamps();
-
-             // Add foreign key constraints
-             $table->foreign('request_of')->references('id')->on('users')->onDelete('cascade');
-             $table->foreign('request_by')->references('id')->on('users')->onDelete('cascade');
-             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

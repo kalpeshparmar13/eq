@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/eqrequest/{id}/edit', [EmergencyQuotaRequestController::class, 'edit'])->name('eqrequest.edit');
     Route::put('/eqrequest/{id}', [EmergencyQuotaRequestController::class, 'update'])->name('eqrequest.update');
     Route::delete('/eqrequest/{id}', [EmergencyQuotaRequestController::class, 'destroy'])->name('eqrequest.destroy');
-    Route::put('/eqrequest/{id}', [EmergencyQuotaRequestController::class, 'forward'])->name('eqrequest.forward');
+    Route::post('/eqrequest/forward', [EmergencyQuotaRequestController::class, 'forward'])->name('eqrequest.forward');
 });
 Route::get('/autocomplete', [StationController::class, 'autocomplete'])->name('autocomplete');
 ?>
