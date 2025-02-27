@@ -194,4 +194,29 @@ class EmergencyQuotaRequestController extends Controller
         return redirect()->route('eqrequest.index') // or wherever you want to redirect
             ->with('success', 'Emergency Quota Request forwarded successfully!');
     }
+
+    public function pullback(Request $request)
+    {
+        // Find the emergency quota request by id
+        $eqrequest = EmergencyQuotaRequest::findOrFail($request->input('id'));
+
+         // Update the 'forwarded_to' field
+        $eqrequest->forwarded_to = null;
+        $eqrequest->status = 'CREATED';
+        $eqrequest->forwarded_dt = null;
+        
+        $eqrequest->save();
+
+        // Redirect back with a success message
+        return redirect()->route('eqrequest.index') // or wherever you want to redirect
+            ->with('success', 'Emergency Quota Request Pulled back  successfully!');
+    }
+    public function print(string $id)
+    {
+        $eqrequest = EmergencyQuotaRequest::find($id);
+        // $trainClasses = TrainClass::all(); 
+        // $users = User::where('role', 'like', 'approving_officer')->get(['id', 'name']);
+        return view('eqrequest.print', compact('eqrequest'));
+    }
+    
 }

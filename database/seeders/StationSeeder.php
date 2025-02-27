@@ -13,7 +13,7 @@ class StationSeeder extends Seeder
      */
     public function run(): void
     {
-        Station::truncate();
+        //Station::truncate();
         $heading = true;
         $input_file = fopen(base_path("database/data/stations.csv"), "r");
 

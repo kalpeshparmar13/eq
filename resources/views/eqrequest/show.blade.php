@@ -8,7 +8,7 @@
 
     @slot('mainContentSlot')
     
-    <form class="max-w-full ml-6 mr-6 mt-2 mb-10 p-5" action="{{ route('eqrequest.forward') }}" method="POST">
+    <form class="max-w-full ml-6 mr-6 mt-2 mb-10 p-5" @if($eqrequest->status == 'CREATED') action="{{ route('eqrequest.forward') }}" @elseif ($eqrequest->status == 'FORWARDED') action="{{ route('eqrequest.pullback') }}" @endif method="POST">
         @csrf
         <input type="hidden" name="id" value="{{ $eqrequest->id }}">
         <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
@@ -73,7 +73,7 @@
                 <select name="forwarded_to" id="forwarded_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                     <option value="">-- Select Officer --</option>
                     @foreach ($users as $user)
-                        <option value="{{ $user->id }}" text="{{ $user->name }}">
+                        <option value="{{ $user->id }}" text="{{ $user->name }}" @if($user->id == $eqrequest->forwarded_to) selected @endif>
                             {{ $user->name }}
                         </option>
                     @endforeach
@@ -81,9 +81,15 @@
             </div>  
         </div>
         <div class="flex space-x-4">
-            <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-1/2">
-                Forward
-            </button>
+            @if ($eqrequest->status == 'CREATED') 
+                <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-1/2">
+                    Forward
+                </button>
+            @elseif ($eqrequest->status == "FORWARDED")
+                <button type="submit" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-1/2">
+                    Pullback
+                </button>
+            @endif
             <button type="reset" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-1/2">
                 Clear
             </button>
