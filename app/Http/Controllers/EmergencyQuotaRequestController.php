@@ -41,7 +41,6 @@ class EmergencyQuotaRequestController extends Controller
 
         // Step 1: Validate the incoming data
         $validated = $request->validate([
-            'diary_no' => 'string|max:255',
             'request_of' => 'required|integer',
             'pnr' => 'required|string|max:20',
             'train_no' => 'required|string|max:10',
@@ -61,7 +60,6 @@ class EmergencyQuotaRequestController extends Controller
 
         // Step 2: Create a new emergency quota request record in the database
         $requestData = new EmergencyQuotaRequest();
-        $requestData->diary_no = "123";
         $requestData->request_of = $validated['request_of'];
         $requestData->pnr = $validated['pnr'];
         $requestData->train_no = $validated['train_no'];
@@ -119,7 +117,6 @@ class EmergencyQuotaRequestController extends Controller
 
         // Step 1: Validate the incoming data
         $validated = $request->validate([
-            'diary_no' => 'string|max:255',
             'request_of' => 'required|integer',
             'pnr' => 'required|string|max:20',
             'train_no' => 'required|string|max:10',
@@ -137,7 +134,6 @@ class EmergencyQuotaRequestController extends Controller
             'request_by' => 'required|integer',
         ]);
 
-        $data->diary_no = "123";
         $data->request_of = $validated['request_of'];
         $data->pnr = $validated['pnr'];
         $data->train_no = $validated['train_no'];
@@ -213,7 +209,8 @@ class EmergencyQuotaRequestController extends Controller
     }
     public function print(string $id)
     {
-        $eqrequest = EmergencyQuotaRequest::find($id);
+        $eqrequest = EmergencyQuotaRequest::findOrFail($id);
+
         // $trainClasses = TrainClass::all(); 
         // $users = User::where('role', 'like', 'approving_officer')->get(['id', 'name']);
         return view('eqrequest.print', compact('eqrequest'));
