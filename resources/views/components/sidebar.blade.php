@@ -77,6 +77,14 @@
                 >Edit/Delete/Forward</a
             >
             </li>
+            <li>
+            <a
+                href="{{ route('eqapprove.index') }}"
+                onclick="this.closest('form').submit(); return false;"
+                class="flex items-center p-2 pl-11 w-full text-base font-medium text-white rounded-lg transition duration-75 group hover:bg-brand-dark dark:text-white dark:hover:bg-gray-700"
+                >Approve</a
+            >
+            </li>
         </ul>
         </li>
         <li>
