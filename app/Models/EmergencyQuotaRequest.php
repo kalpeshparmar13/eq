@@ -12,9 +12,12 @@ class EmergencyQuotaRequest extends Model
     protected $table = 'emergency_quota_requests';
     
     protected $fillable = [
+        'diary_year',
         'diary_no',
+        'diary_no_full',
         'request_of',
         'request_by',
+        'is_on_duty',
         'pnr',
         'train_no',
         'train_name',
@@ -27,16 +30,16 @@ class EmergencyQuotaRequest extends Model
         'mobile_no',
         'journey_purpose',
         'created_by',
-        'created_dt',
         'forwarded_to',
         'forwarded_dt',
         'status',
-        
+        'status_approval',
+        'status_rejection_remark',
+        'status_approval_dt',
     ];
 
     protected $casts = [
         'journey_dt' => 'date',
-        'created_dt' => 'date',
         'forwarded_dt' => 'date',
     ];
 

@@ -16,7 +16,9 @@ class EmergencyQuotaRequestController extends Controller
      */
     public function index()
     {
-        $eqrequests = EmergencyQuotaRequest::all()->sortByDesc('created_dt');
+        $eqrequests = EmergencyQuotaRequest::where('created_by', Auth::id())
+                                                ->orderByDesc('created_dt')
+                                                ->get();
         return view('eqrequest.index', compact('eqrequests'));
     }
 
@@ -37,11 +39,12 @@ class EmergencyQuotaRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all(), $request->input());
+        dd($request->all(), $request->input());
 
         // Step 1: Validate the incoming data
         $validated = $request->validate([
             'request_of' => 'required|integer',
+            'is_on_duty' => 'required',
             'pnr' => 'required|string|max:20',
             'train_no' => 'required|string|max:10',
             'train_name' => 'required|string|max:100',

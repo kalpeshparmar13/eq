@@ -57,45 +57,52 @@
             <tbody class="text-base">
                 @foreach ($eqrequests as $eqreq)
                 <tr class="bg-emerald-50 text-black text-base border-b dark:bg-gray-800 dark:border-gray-700 border-rose-200">
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->id }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->diary_no }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->pnr }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->train_no }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->train_name }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ \Carbon\Carbon::parse($eqreq->journey_dt)->format('d-m-Y') }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->stationFrom->code }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->stationTo->code }}
                     </td>
-                    <!-- <td class="px-6 py-4">
+                    <!-- <td class="px-4 py-1">
                         {{ $eqreq->no_of_births }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->class }}
                     </td> -->
-                    <td class="px-6 py-4">
+                    <td class="px-4 py-1">
                         {{ $eqreq->passenger_name }}
                     </td>
-                    <!-- <td class="px-6 py-4">
+                    <!-- <td class="px-4 py-1">
                         {{ $eqreq->mobile_no }}
                     </td> -->
-                    <td class="px-6 py-4 text-right flex">
-                        <a href="{{ route('eqapprove.show', $eqreq->id) }}" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >Approve / Reject</a>
+                    @if ($eqreq->status == 'FORWARDED' and $eqreq->status_approval == '')
+                    <td class="px-4 py-1 text-right flex">
+                        <a href="{{ route('eqapprove.show', $eqreq->id) }}" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">Approve / Reject</a>
                     </td>
+                    @endif
+                    @if ($eqreq->status == 'FORWARDED' and $eqreq->status_approval == 'APPROVED')
+                    <td class="px-4 py-1 text-right flex">
+                    <a href="{{ route('eqrequest.print', $eqreq->id) }}" class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">Print</a>  
+                    </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

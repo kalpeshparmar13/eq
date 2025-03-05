@@ -72,7 +72,7 @@
     <div style="margin: left 30px;">
         <div class="header">
             <div class="header-cell">
-                <p class="tight-spacing">Diary No : {{ $eqrequest->diary_no }}</p>
+                <p class="tight-spacing">Diary No : {{ $eqrequest->diary_no_full }}</p>
                 <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->name_hindi }}</em></p>
                 <p class="officername" class="tight-spacing">{{ $eqrequest->forwardedTo->name }}</p>
                 <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->designation }}, {{ $eqrequest->forwardedTo->station }}</em></p>

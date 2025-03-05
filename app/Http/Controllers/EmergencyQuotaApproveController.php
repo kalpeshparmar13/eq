@@ -17,6 +17,7 @@ class EmergencyQuotaApproveController extends Controller
     public function index()
     {
         $eqrequests = EmergencyQuotaRequest::where('status', 'FORWARDED')
+                                                ->orWhere('forwarded_to', Auth::id())
                                                 ->orderByDesc('created_dt')
                                                 ->get();
         return view('eqapprove.index', compact('eqrequests'));
@@ -75,10 +76,20 @@ class EmergencyQuotaApproveController extends Controller
 
     public function approve(Request $request)
     {
+        $last_diary_no = EmergencyQuotaRequest::where('status_approval', 'APPROVED')
+                                                ->where('forwarded_to', Auth::id())
+                                                ->max('diary_no');
+        
+        $nextdiaryNo = $last_diary_no ? $last_diary_no + 1 : 1;
+
         // Find the emergency quota request by id
         $eqrequest = EmergencyQuotaRequest::findOrFail($request->input('id'));
-        $eqrequest->status = 'APPROVED';
-        
+        $eqrequest->status_approval = 'APPROVED';
+        $eqrequest->status_approval_dt = now();
+        $eqrequest->diary_no = $nextdiaryNo;
+        $eqrequest->diary_year = now()->year;
+        $eqrequest->diary_no_full =  Auth::user()->diary_name . '/' . now()->year. '/' . $nextdiaryNo;
+                
         $eqrequest->save();
 
         // Redirect back with a success message
