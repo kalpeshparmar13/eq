@@ -62,14 +62,21 @@
                     @endforeach
                 </select>             
             </div>
-            <!-- <div>
+            <div>
                 <label for="is_on_duty" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is On Duty?</label>
-                <label class="inline-flex items-center me-5 cursor-pointer">
-                <input type="checkbox"  id="is_on_duty" class="sr-only peer" onchange="toggleDutyStatus()" @if($eqrequest->is_on_duty) checked @endif>
-                    <div class="relative w-14 h-7 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-500 dark:peer-checked:bg-orange-500"></div>
-                    <span name="is_on_duty" id="duty_status_text" class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">@if($eqrequest->is_on_duty) Yes @else No @endif</span>
-                </label>
-            </div> -->
+                <div class="flex">
+                    <div class="flex items-center me-4">
+                        <input id="inline-radio" type="radio" value="1" name="is_on_duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                            {{ old('is_on_duty', $eqrequest->is_on_duty) == 1 ? 'checked' : '' }} >
+                        <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input id="inline-checked-radio" type="radio" value="0" name="is_on_duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                            {{ old('is_on_duty', $eqrequest->is_on_duty) == 0 ? 'checked' : '' }}>
+                        <label for="inline-checked-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-4 mb-6">
             <div>

@@ -13,9 +13,9 @@
         }
         .header {
             display: grid;
-            grid-template-columns: 1fr 150px 1fr;
+            grid-template-columns: 300px 150px 350px;
             border: 0px solid black;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .header-cell {
             padding: 10px;
@@ -23,10 +23,11 @@
         }
         .logo {
             align-items: center;
+            align-content: center;
         }
         .logo img {
-            width: 100%;
-            height: 100%;
+            width: 140px;
+            height: 80%;
         }
         .right-header {
             font-weight: normal;
@@ -117,7 +118,7 @@
                 </tr>
                 <tr>
                     <th>No. of Berth</th>
-                    <td><b>{{ $eqrequest->no_of_births }}</b></td>
+                    <td><b>{{ $eqrequest->no_of_births }} </td>
                 </tr>
                 <tr>
                     <th>Class</th>
@@ -125,11 +126,11 @@
                 </tr>
                 <tr>
                     <th>PNR No.</th>
-                    <td class="pnr">{{ $eqrequest->pnr }}</td>
+                    <td class="pnr">{{ $eqrequest->pnr }} @if ($eqrequest->is_on_duty) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ON DUTY)@endif</td>
                 </tr>
                 <tr>
                     <th>Name of Passenger</th>
-                    <td><b>{{ $eqrequest->passenger_name }}</b></td>
+                    <td><b>{{ $eqrequest->passenger_name }} @if ($eqrequest->no_of_births>1) + {{ $eqrequest->no_of_births - 1 }} @endif</b></b></td>
                 </tr>
                 <tr>
                     <th>Mobile No.</th>

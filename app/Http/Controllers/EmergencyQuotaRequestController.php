@@ -39,7 +39,7 @@ class EmergencyQuotaRequestController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all(), $request->input());
+        //dd($request->all(), $request->input());
 
         // Step 1: Validate the incoming data
         $validated = $request->validate([
@@ -64,6 +64,7 @@ class EmergencyQuotaRequestController extends Controller
         // Step 2: Create a new emergency quota request record in the database
         $requestData = new EmergencyQuotaRequest();
         $requestData->request_of = $validated['request_of'];
+        $requestData->is_on_duty = $validated['is_on_duty'];
         $requestData->pnr = $validated['pnr'];
         $requestData->train_no = $validated['train_no'];
         $requestData->train_name = $validated['train_name'];
@@ -116,11 +117,12 @@ class EmergencyQuotaRequestController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = EmergencyQuotaRequest::find($id);
+            $data = EmergencyQuotaRequest::find($id);
 
         // Step 1: Validate the incoming data
         $validated = $request->validate([
             'request_of' => 'required|integer',
+            'is_on_duty' => 'required',
             'pnr' => 'required|string|max:20',
             'train_no' => 'required|string|max:10',
             'train_name' => 'required|string|max:100',
@@ -138,6 +140,7 @@ class EmergencyQuotaRequestController extends Controller
         ]);
 
         $data->request_of = $validated['request_of'];
+        $data->is_on_duty = $validated['is_on_duty'];
         $data->pnr = $validated['pnr'];
         $data->train_no = $validated['train_no'];
         $data->train_name = $validated['train_name'];
