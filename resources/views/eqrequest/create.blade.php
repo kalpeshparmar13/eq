@@ -65,11 +65,11 @@
                 <label for="is_on_duty" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is On Duty?</label>
                 <div class="flex">
                     <div class="flex items-center me-4">
-                        <input id="inline-radio" type="radio" value="true" name="is_on_duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input id="inline-radio" type="radio" value="1" name="is_on_duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yes</label>
                     </div>
                     <div class="flex items-center me-4">
-                        <input checked id="inline-checked-radio" type="radio" value="false" name="is_on_duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input checked id="inline-checked-radio" type="radio" value="0" name="is_on_duty" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="inline-checked-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
                     </div>
                 </div>

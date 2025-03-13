@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TrainClass;
+use Carbon\Carbon;
 
 class EmergencyQuotaRequestController extends Controller
 {
@@ -17,7 +18,8 @@ class EmergencyQuotaRequestController extends Controller
     public function index()
     {
         $eqrequests = EmergencyQuotaRequest::where('created_by', Auth::id())
-                                                ->orderByDesc('created_dt')
+                                                ->whereBetween('created_at', [Carbon::now()->subMonths(1)->startOfDay(), Carbon::now()->endOfDay()])
+                                                ->orderByDesc('created_at')
                                                 ->get();
         return view('eqrequest.index', compact('eqrequests'));
     }

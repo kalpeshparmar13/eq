@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TrainClass;
+use Carbon\Carbon;
 
 class EmergencyQuotaApproveController extends Controller
 {
@@ -17,8 +18,9 @@ class EmergencyQuotaApproveController extends Controller
     public function index()
     {
         $eqrequests = EmergencyQuotaRequest::where('status', 'FORWARDED')
-                                                ->orWhere('forwarded_to', Auth::id())
-                                                ->orderByDesc('created_dt')
+                                                ->where('forwarded_to', Auth::id())
+                                                ->whereBetween('created_at', [now()->subMonths(1)->startOfDay(), now()->endOfDay()])
+                                                ->orderByDesc('created_at')
                                                 ->get();
         return view('eqapprove.index', compact('eqrequests'));
     }

@@ -26,7 +26,7 @@ class LoginController extends Controller
         ]);
 
         // Attempt to log the user in
-        if (Auth::attempt(['pfno' => $request->pfno, 'password' => $request->password], $request->remember)) {
+        if (Auth::attempt(['pfno' => $request->pfno, 'password' => $request->password], $request->remember) && (Auth::user()->role === 'dealing_clerk' or Auth::user()->role === 'approving_officer')) {
             // Authentication passed, redirect to the intended page or default dashboard
 
             $user = Auth::user();  // Get the authenticated user

@@ -73,7 +73,8 @@
     <div style="margin: left 30px;">
         <div class="header">
             <div class="header-cell">
-                <p class="tight-spacing">Diary No : {{ $eqrequest->diary_no_full }}</p>
+                <!-- <p class="tight-spacing">Diary No : {{ $eqrequest->diary_no_full }}</p> -->
+                <p class="tight-spacing">Diary No : </p>
                 <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->name_hindi }}</em></p>
                 <p class="officername" class="tight-spacing">{{ $eqrequest->forwardedTo->name }}</p>
                 <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->designation }}, {{ $eqrequest->forwardedTo->station }}</em></p>
@@ -92,7 +93,7 @@
                 <p class="tight-spacing">{{ $eqrequest->forwardedTo->city }}--{{ $eqrequest->forwardedTo->pincode }}, {{ $eqrequest->forwardedTo->state }}.</p>
                 <p class="tight-spacing">Rly. Phone No. {{ $eqrequest->forwardedTo->rly_phone_no }}</p>
                 <p class="tight-spacing">Mob. No. {{ $eqrequest->forwardedTo->mobile_no }}</p>
-                <p class="tight-spacing">Date : {{ $eqrequest->forwardedTo->created_at->format("d-m-Y") }}</p>
+                <p class="tight-spacing">Date : {{ date('d-m-Y', strtotime($eqrequest->created_at)) }}</p>
             </div>
         </div>
 
@@ -122,7 +123,7 @@
                 </tr>
                 <tr>
                     <th>Class</th>
-                    <td><b>{{ $eqrequest->trainClass->sname}} ({{ $eqrequest->trainClass->fname}})</b></td>
+                    <td><b>{{ $eqrequest->trainClass->fname}}</b></td>
                 </tr>
                 <tr>
                     <th>PNR No.</th>
