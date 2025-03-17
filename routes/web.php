@@ -7,7 +7,7 @@ use App\Http\Controllers\EmergencyQuotaApproveController;
 use App\Http\Controllers\StationController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginform');

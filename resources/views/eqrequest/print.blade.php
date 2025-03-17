@@ -13,9 +13,9 @@
         }
         .header {
             display: grid;
-            grid-template-columns: 300px 150px 350px;
+            grid-template-columns: 35% 23% 43%;
             border: 0px solid black;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .header-cell {
             padding: 10px;
@@ -23,10 +23,9 @@
         }
         .logo {
             align-items: center;
-            align-content: center;
         }
         .logo img {
-            width: 140px;
+            width: 80%;
             height: 80%;
         }
         .right-header {

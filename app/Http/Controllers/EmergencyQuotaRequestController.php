@@ -162,7 +162,7 @@ class EmergencyQuotaRequestController extends Controller
 
         // Step 4: Redirect or return a response
         return redirect()->route('eqrequest.index') // or wherever you want to redirect
-            ->with('success', 'Emergency Quota Request saved successfully!');
+            ->with('success', 'Emergency Quota Request updated successfully!');
     }
 
     /**

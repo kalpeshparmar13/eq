@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
                     'role' => $record['19'],
                     'is_active' => $record['20'],
                     'email_verified_at' => now(),
-                    'password' => Hash::make('password'),
+                    'password' => Hash::make($record['22']),
                     'created_by' => 'System',
                     'updated_by' => 'System',
                 ]);
@@ -75,7 +75,7 @@ class UsersTableSeeder extends Seeder
 
         // User::create([
         //     'pfno' => 'clerk',
-        //     'name' => 'Lekhraj Pabri',
+        //     'name' => 'clerk',
         //     'designation' => 'JAA',
         //     'email' => 'clerk@rjt.com',
         //     'mobile_no' => '0987654321',
@@ -142,7 +142,7 @@ class UsersTableSeeder extends Seeder
         // ]);
 
         // User::create([
-        //     'pfno' => '50820231994',
+        //     'pfno' => 'officer',
         //     'name' => 'Vasant Parmar',
         //     'name_hindi' => "वसंत परमार",
         //     'designation' => 'ADFM-II',
