@@ -13,12 +13,12 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-gray-100 uppercase bg-brand-default dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
+                    <!-- <th scope="col" class="px-6 py-3">
                         Id
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Diary No
-                    </th>
+                    </th> -->
                     <th scope="col" class="px-6 py-3">
                         PNR
                     </th>
@@ -50,19 +50,19 @@
                         Mobile No
                     </th> -->
                     <th scope="col" class="px-6 py-3">
-                        <span class="sr-only">Edit</span>
+                        Action
                     </th>
                 </tr>
             </thead>
             <tbody class="text-base">
                 @foreach ($eqrequests as $eqreq)
                 <tr class="bg-emerald-50 text-black text-base border-b dark:bg-gray-800 dark:border-gray-700 border-rose-200">
-                    <td class="px-4 py-1">
+                    <!-- <td class="px-4 py-1">
                         {{ $eqreq->id }}
                     </td>
                     <td class="px-4 py-1">
                         {{ $eqreq->diary_no }}
-                    </td>
+                    </td> -->
                     <td class="px-4 py-1">
                         {{ $eqreq->pnr }}
                     </td>

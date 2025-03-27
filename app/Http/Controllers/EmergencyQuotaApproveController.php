@@ -19,6 +19,7 @@ class EmergencyQuotaApproveController extends Controller
     {
         $eqrequests = EmergencyQuotaRequest::where('status', 'FORWARDED')
                                                 ->where('forwarded_to', Auth::id())
+                                                ->orwhere('created_by', Auth::id())
                                                 ->whereBetween('created_at', [now()->subMonths(1)->startOfDay(), now()->endOfDay()])
                                                 ->orderByDesc('created_at')
                                                 ->get();
@@ -78,19 +79,21 @@ class EmergencyQuotaApproveController extends Controller
 
     public function approve(Request $request)
     {
+        // Find the emergency quota request by id
+        $eqrequest = EmergencyQuotaRequest::findOrFail($request->input('id'));
+
         $last_diary_no = EmergencyQuotaRequest::where('status_approval', 'APPROVED')
-                                                ->where('forwarded_to', Auth::id())
+                                                ->where('forwarded_to',$eqrequest->forwardedTo->id)
                                                 ->max('diary_no');
         
         $nextdiaryNo = $last_diary_no ? $last_diary_no + 1 : 1;
 
-        // Find the emergency quota request by id
-        $eqrequest = EmergencyQuotaRequest::findOrFail($request->input('id'));
+        
         $eqrequest->status_approval = 'APPROVED';
         $eqrequest->status_approval_dt = now();
         $eqrequest->diary_no = $nextdiaryNo;
         $eqrequest->diary_year = now()->year;
-        $eqrequest->diary_no_full =  Auth::user()->diary_name . '/' . now()->year. '/' . $nextdiaryNo;
+        $eqrequest->diary_no_full =  $eqrequest->forwardedTo->diary_name . '/' . now()->year. '/' . $nextdiaryNo;
                 
         $eqrequest->save();
 
