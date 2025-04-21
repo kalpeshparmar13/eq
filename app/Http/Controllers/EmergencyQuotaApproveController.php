@@ -83,6 +83,7 @@ class EmergencyQuotaApproveController extends Controller
         $eqrequest = EmergencyQuotaRequest::findOrFail($request->input('id'));
 
         $last_diary_no = EmergencyQuotaRequest::where('status_approval', 'APPROVED')
+                                                ->where('diary_year', now()->year)
                                                 ->where('forwarded_to',$eqrequest->forwardedTo->id)
                                                 ->max('diary_no');
         

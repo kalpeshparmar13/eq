@@ -19,7 +19,7 @@ return new class extends Migration
         Schema::create('emergency_quota_requests', function (Blueprint $table) {
             $table->id();
             $table->string('diary_year')->nullable();
-            $table->string('diary_no')->nullable();
+            $table->integer('diary_no')->nullable();
             $table->string('diary_no_full')->nullable();
             $table->foreignIdFor(User::class, 'request_of')->constrained(); 
             $table->foreignIdFor(User::class, 'request_by')->constrained(); 
