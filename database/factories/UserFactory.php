@@ -24,18 +24,18 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'pfno' => fake()->unique()->numberBetween(10000000000,99999999999),
-            'name' => fake()->name(),
-            'designation' => fake()->jobTitle(),
-            'email' => fake()->unique()->safeEmail(),
-            'mobile_no' => fake()->unique()->phoneNumber(),
-            'role' => fake()->randomElement(['user','dealing_clerk','admin_officer','admin']),
-            'is_active' => true,
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
-            'created_by' => 'Seeder',
-            'updated_by' => 'Seeder',
+            // 'pfno' => fake()->unique()->numberBetween(10000000000,99999999999),
+            // 'name' => fake()->name(),
+            // 'designation' => fake()->jobTitle(),
+            // 'email' => fake()->unique()->safeEmail(),
+            // 'mobile_no' => fake()->unique()->phoneNumber(),
+            // 'role' => fake()->randomElement(['user','dealing_clerk','admin_officer','admin']),
+            // 'is_active' => true,
+            // 'email_verified_at' => now(),
+            // 'password' => static::$password ??= Hash::make('password'),
+            // 'remember_token' => Str::random(10),
+            // 'created_by' => 'Seeder',
+            // 'updated_by' => 'Seeder',
         ];
     }
 

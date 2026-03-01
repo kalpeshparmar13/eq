@@ -19,12 +19,13 @@ return new class extends Migration
         Schema::create('emergency_quota_requests', function (Blueprint $table) {
             $table->id();
             $table->string('diary_year')->nullable();
-            $table->string('diary_no')->nullable();
+            $table->integer('diary_no')->nullable();
             $table->string('diary_no_full')->nullable();
             $table->foreignIdFor(User::class, 'request_of')->constrained(); 
             $table->foreignIdFor(User::class, 'request_by')->constrained(); 
             $table->foreignIdFor(User::class, 'created_by')->constrained(); 
             $table->foreignIdFor(User::class, 'forwarded_to')->nullable()->constrained(); 
+            $table->boolean('is_on_duty')->default(0);
             $table->string('pnr');
             $table->string('train_no');
             $table->string('train_name');
@@ -38,6 +39,9 @@ return new class extends Migration
             $table->string('journey_purpose');
             $table->date('forwarded_dt')->nullable();
             $table->string('status');
+            $table->string('status_approval')->nullable();
+            $table->string('status_rejection_remark')->nullable();
+            $table->date('status_approval_dt')->nullable();
             $table->timestamps();
         });
     }

@@ -1,0 +1,55 @@
+id,pfno,name,name_hindi,designation,designation_hindi,email,mobile_no,rly_phone_no,station,station_hindi,office_name,address_line1,address_line2,city,pincode,state,file_name,diary_name,role,is_active,email_verified_at,password,created_by,updated_by,remember_token,created_at,updated_at,birthdate
+1,50829802940,ARYA KIRNENDU,आर्या किरनेंदु,SR. DFM,मंडल वित्त प्रबंधक,srdfm@rjt.com,9724094100,,Rajkot,राजकोट,Sr. Divisional Finance Manager's Office,Kothi Compound,Nr. Hospital Chowk,Rajkot,360001,Gujarat,No.RJT/ACCT/EQ,SRDFM,approving_officer,1,,23061990,System,System,NULL,13-03-25 7:47,13-03-25 7:47,23-Jun-90
+2,50816241460,BIRDICHAND GHANCHA,बिरदीचंद घांचा,ADFM-I,सहा. मंडल वित्त प्रबंधक,adfm1@rjt.com,9724094102,,Rajkot,राजकोट,Sr. Divisional Finance Manager's Office,Kothi Compound,Nr. Hospital Chowk,Rajkot,360001,Gujarat,No.RJT/ACCT/EQ,ADFM-I,approving_officer,1,,04021968,System,System,NULL,13-03-25 7:47,13-03-25 7:47,04-Feb-68
+3,50820231994,VASANT PARMAR,वसंत परमार,ADFM-II,सहा. मंडल वित्त प्रबंधक,adfm2@rjt.com,9724040286,,Rajkot,राजकोट,Sr. Divisional Finance Manager's Office,Kothi Compound,Nr. Hospital Chowk,Rajkot,360001,Gujarat,No.RJT/ACCT/EQ,ADFM-II,approving_officer,1,,21061971,System,System,NULL,13-03-25 7:47,13-03-25 7:47,21-Jun-71
+4,21629806493,SATYAKAM  AGRAWAL,,SE(IT),,user1@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,12091986,System,System,,,,12-Sep-86
+5,21629806457,USHABEN CHAVDA,,PEON,,user2@rjt.com,,,Rajkot,,,,,,,,,,user,1,,11121981,System,System,,,,11-Dec-81
+6,50812290312,VIPUL H BHATT,,Sr. SO /ACCOUNTS,,user3@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,28031974,System,System,,,,28-Mar-74
+7,50818352595,PUSPA R KHETIA,,PEON,,user4@rjt.com,9099141147,,Rajkot,,,,,,,,,,user,1,,23101965,System,System,,,,23-Oct-65
+8,50820231982,RAVIKUMAR  SHARMA,,Sr. SO /ACCOUNTS,,user5@rjt.com,9879219669,,Rajkot,,,,,,,,,,dealing_clerk,1,,29041973,System,System,,,,29-Apr-73
+9,50815430522,NARENDRA SINGH BHADORIA,,Sr. SO /ACCOUNTS,,user6@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,02011969,System,System,,,,02-Jan-69
+10,50812197452,A K TIWARI,,Sr. SO /ACCOUNTS,,user7@rjt.com,9724094108,,Rajkot,,,,,,,,,,dealing_clerk,1,,27111965,System,System,,,,27-Nov-65
+11,50820120818,AMRESH SINGH,,SE(IT),,user8@rjt.com,9725678185,,Rajkot,,,,,,,,,,dealing_clerk,1,,09071977,System,System,,,,09-Jul-77
+12,50812290294,K K RAIJADA,,ACCOUNTS CLERK,,user9@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,13111973,System,System,,,,13-Nov-73
+13,50812300299,GOPAL RAM SHARMA,,Asst.DIVISIONAL CASHIER(PAY),,user10@rjt.com,9427222458,,Rajkot,,,,,,,,,,dealing_clerk,1,,12091973,System,System,,,,12-Sep-73
+14,50817583524,CHAVDA VIJAYKUMAR,,Sr. SO /ACCOUNTS,,user11@rjt.com,9724094110,,Rajkot,,,,,,,,,,dealing_clerk,1,,11071969,System,System,,,,11-Jul-69
+15,50881800006,RAMESH KANTI SOLANKI,,PEON,,user12@rjt.com,9725994903,,Rajkot,,,,,,,,,,user,1,,06121975,System,System,,,,06-Dec-75
+16,00129800142,KALPESH VALJIBHAI PARMAR,,SE(IT),,user13@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,13121989,System,System,,,,13-Dec-89
+17,21629807062,DIGAR SINGH,,ACCOUNTANT,,user14@rjt.com,9125399704,,Rajkot,,,,,,,,,,dealing_clerk,1,,30041994,System,System,,,,30-Apr-94
+18,21629807063,PREMJEET KUMAR,,ACCOUNTANT,,user15@rjt.com,7250210976,,Rajkot,,,,,,,,,,dealing_clerk,1,,10051997,System,System,,,,10-May-97
+19,21629807064,DHARAM KUMAR,,ACCOUNTANT,,user16@rjt.com,9113707261,,Rajkot,,,,,,,,,,dealing_clerk,1,,05051996,System,System,,,,05-May-96
+20,21629807117,NITESH KUMAR,,ACCOUNTANT,,user17@rjt.com,8077919617,,Rajkot,,,,,,,,,,dealing_clerk,1,,25061998,System,System,,,,25-Jun-98
+21,50320150113,ABRAR ALI,,Sr. SO /ACCOUNTS,,user18@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,01061989,System,System,,,,01-Jun-89
+22,50820231970,JITENDRASINH PARMAR,,SR. ACCOUNTANT,,user19@rjt.com,9428891106,,Rajkot,,,,,,,,,,dealing_clerk,1,,28101968,System,System,,,,28-Oct-68
+23,21629807390,PRITAMKUMAR TAYADE,,ACCOUNTANT,,user20@rjt.com,8956434457,,Rajkot,,,,,,,,,,dealing_clerk,1,,11111991,System,System,,,,11-Nov-91
+24,21629805186,DHARMESH J TRIVEDI,,SR. ACCOUNTANT,,user21@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,20101985,System,System,,,,20-Oct-85
+25,21629806334,MANSI  H VYAS,,ACCOUNTS CLERK,,user22@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,29091997,System,System,,,,29-Sep-97
+26,21629806317,RAJAN B GOSAI,,JAMADAR PEON,,user23@rjt.com,,,Rajkot,,,,,,,,,,user,1,,10021989,System,System,,,,10-Feb-89
+27,21629807055,PARMITABA RAGHUVIRSINH JADEJA,,ACCOUNTS CLERK,,user24@rjt.com,9106818873,,Rajkot,,,,,,,,,,dealing_clerk,1,,17031999,System,System,,,,17-Mar-99
+28,21629807509,LEKHRAJ PABRI,,ACCOUNTANT,,user25@rjt.com,7740868056,,Rajkot,,,,,,,,,,dealing_clerk,1,,28061994,System,System,,,,28-Jun-94
+30,50881803011,HITESH,,OFFICE ASSISTANT(ACS),,user27@rjt.com,,,Rajkot,,,,,,,,,,user,1,,03021977,System,System,,,,03-Feb-77
+31,21629805075,MAYURDHVAJ U GADHAVI,,SR. ACCOUNTANT,,user28@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,09081983,System,System,,,,09-Aug-83
+32,21629805185,VISHAL JANAKSINH CHAUHAN,,SR. ACCOUNTANT,,user29@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,10021991,System,System,,,,10-Feb-91
+33,21629806248,MEERA H RATHOD,,ACCOUNTANT,,user30@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,16051986,System,System,,,,16-May-86
+34,21629806250,DARSHAN R MER,,ACCOUNTS CLERK,,user31@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,05101998,System,System,,,,05-Oct-98
+35,21629804923,AMIT PRATAPBHAI KAMANI,,Sr. SO /ACCOUNTS,,user32@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,14061985,System,System,,,,14-Jun-85
+36,21629806392,HARSHVARDHAN SHARMA,,SE(IT),,user33@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,19111997,System,System,,,,19-Nov-97
+37,21629806276,VINEET NARAYAN,,ACCOUNTS CLERK,,user34@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,05101991,System,System,,,,05-Oct-91
+38,21629806414,NIRUBEN A DABHI,,ACCOUNTS CLERK,,user35@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,10101983,System,System,,,,10-Oct-83
+39,21629806709,RAVI KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user36@rjt.com,8840059397,,Rajkot,,,,,,,,,,dealing_clerk,1,,31081997,System,System,,,,31-Aug-97
+40,21629806710,VISHAL KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user37@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,14041994,System,System,,,,14-Apr-94
+41,21629806542,RAHUL KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user38@rjt.com,9534677438,,Rajkot,,,,,,,,,,dealing_clerk,1,,14061997,System,System,,,,14-Jun-97
+42,21629806690,PRAVEEN KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user39@rjt.com,9004748673,,Rajkot,,,,,,,,,,dealing_clerk,1,,15111997,System,System,,,,15-Nov-97
+43,21629806538,VISHAL,,PROB Jr. ACCOUNTS ASSISTANT,,user40@rjt.com,7905854239,,Rajkot,,,,,,,,,,dealing_clerk,1,,20081998,System,System,,,,20-Aug-98
+44,21629806622,SUNNY  KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user41@rjt.com,9576602662,,Rajkot,,,,,,,,,,dealing_clerk,1,,08101990,System,System,,,,08-Oct-90
+45,21629806539,VIKAS KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user42@rjt.com,8757564072,,Rajkot,,,,,,,,,,dealing_clerk,1,,19021996,System,System,,,,19-Feb-96
+46,21629806543,RAKESH KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user43@rjt.com,,,Rajkot,,,,,,,,,,dealing_clerk,1,,16011996,System,System,,,,16-Jan-96
+47,21629806544,PANKAJ KUMAR MEENA,,PROB Jr. ACCOUNTS ASSISTANT,,user44@rjt.com,9782965895,,Rajkot,,,,,,,,,,dealing_clerk,1,,15111997,System,System,,,,15-Nov-97
+48,21629806537,GAURAV KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user45@rjt.com,9570399094,,Rajkot,,,,,,,,,,dealing_clerk,1,,16031995,System,System,,,,16-Mar-95
+49,21629806541,GUNJAN KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user46@rjt.com,7050116509,,Rajkot,,,,,,,,,,dealing_clerk,1,,08101997,System,System,,,,08-Oct-97
+50,21629806546,ALOK  KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user47@rjt.com,8808739446,,Rajkot,,,,,,,,,,dealing_clerk,1,,24031992,System,System,,,,24-Mar-92
+51,21629806535,SUBHASH KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user48@rjt.com,7667467665,,Rajkot,,,,,,,,,,dealing_clerk,1,,16021988,System,System,,,,16-Feb-88
+52,21629806547,NARENDRA  KUMAR MANGAL,,PROB Jr. ACCOUNTS ASSISTANT,,user49@rjt.com,8875178357,,Rajkot,,,,,,,,,,dealing_clerk,1,,10061992,System,System,,,,10-Jun-92
+53,21629806540,CHANDAN KUMAR,,PROB Jr. ACCOUNTS ASSISTANT,,user50@rjt.com,7033505956,,Rajkot,,,,,,,,,,dealing_clerk,1,,18091996,System,System,,,,18-Sep-96
+54,21629806536,RAVIRAJ SONI,,PROB Jr. ACCOUNTS ASSISTANT,,user51@rjt.com,9117421020,,Rajkot,,,,,,,,,,dealing_clerk,1,,28011990,System,System,,,,28-Jan-90
+55,21629807518,AMIT SINGH BHADOURIA,,ACCOUNTANT,,user52@rjt.com,9140436159,,Rajkot,,,,,,,,,,dealing_clerk,1,,01011996,System,System,,,,01-Jan-96
