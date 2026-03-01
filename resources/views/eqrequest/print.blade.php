@@ -13,7 +13,7 @@
         }
         .header {
             display: grid;
-            grid-template-columns: 1fr 150px 1fr;
+            grid-template-columns: 35% 23% 43%;
             border: 0px solid black;
             margin-bottom: 20px;
         }
@@ -25,8 +25,8 @@
             align-items: center;
         }
         .logo img {
-            width: 100%;
-            height: 100%;
+            width: 80%;
+            height: 80%;
         }
         .right-header {
             font-weight: normal;
@@ -73,10 +73,10 @@
         <div class="header">
             <div class="header-cell">
                 <p class="tight-spacing">Diary No : {{ $eqrequest->diary_no }}</p>
-                <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->name_hindi }}</em></p>
+                <p class="tight-spacing officername"><em>{{ $eqrequest->forwardedTo->name_hindi }}</em></p>
                 <p class="officername" class="tight-spacing">{{ $eqrequest->forwardedTo->name }}</p>
                 <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->designation }}, {{ $eqrequest->forwardedTo->station }}</em></p>
-                <p class="tight-spacing">{{ $eqrequest->forwardedTo->designation_hindi }}, {{ $eqrequest->forwardedTo->station_hindi }}</p>
+                <p class="tight-spacing"><em>{{ $eqrequest->forwardedTo->designation_hindi }}, {{ $eqrequest->forwardedTo->station_hindi }}</em></p>
                 <p class="tight-spacing">{{ $eqrequest->forwardedTo->file_name}}</p>
             </div>
             <div class="logo">
@@ -121,7 +121,7 @@
                 </tr>
                 <tr>
                     <th>Class</th>
-                    <td><b>{{ $eqrequest->trainClass->sname}} ({{ $eqrequest->trainClass->fname}})</b></td>
+                    <td><b>{{ $eqrequest->trainClass->fname}}</b></td>
                 </tr>
                 <tr>
                     <th>PNR No.</th>
